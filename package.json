@@ -1,0 +1,14 @@
+{
+  "name": "sknogi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "pull": "node",
+    "push": "",
+    "commit": "node ./bin/commit.js"
+  },
+  "dependencies": {
+    "yargs": "^13.2.2"
+  }
+}
