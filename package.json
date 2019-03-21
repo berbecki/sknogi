@@ -6,10 +6,13 @@
   "scripts": {
     "pull": "node",
     "push": "",
-    "commit": "node ./bin/commit.js"
+    "commit": "node ./bin/commit.js",
+    "prettier-watch": "onchange './tmp/**/*.json' -- prettier --write {{changed}}"
   },
   "dependencies": {
+    "onchange": "^5.2.0",
     "prettier": "^1.16.4",
+    "simple-git": "^1.107.0",
     "unzipper": "^0.9.11",
     "yargs": "^13.2.2"
   }

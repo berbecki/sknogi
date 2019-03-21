@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const unzipper = require("unzipper");
+const git = require('simple-git')()
 
 const sourceFolder = "./source";
 const trackedFolder = "./tracked";
@@ -20,9 +21,10 @@ filenames.forEach(({ name, file }) => {
     path.resolve(`${sourceFolder}/${file}`),
     path.resolve(`${sourceFolder}/${name}.zip`)
   );
-  console.log("path:");
   fs.createReadStream(path.resolve(`${sourceFolder}/${name}.zip`))
     .pipe(unzipper.Extract({ path: path.resolve(`${trackedFolder}/${name}`) }));
 });
+
+git.add('./*').commit("first commit from simple-git!")
 
 console.log("farr", filenames);
