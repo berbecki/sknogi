@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 
-console.log('abc');
+console.log('abc')
+
