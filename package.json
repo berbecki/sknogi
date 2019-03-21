@@ -9,6 +9,8 @@
     "commit": "node ./bin/commit.js"
   },
   "dependencies": {
+    "prettier": "^1.16.4",
+    "unzipper": "^0.9.11",
     "yargs": "^13.2.2"
   }
 }
