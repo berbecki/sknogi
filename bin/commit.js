@@ -2,15 +2,19 @@
 
 const fs = require("fs");
 const path = require("path");
+const chalk = require('chalk')
+const inquirer = require('inquirer')
+const argv = require("yargs").argv;
 const unzipper = require("unzipper");
-const git = require('simple-git')()
+const git = require("simple-git")();
 
 const sourceFolder = "./source";
 const trackedFolder = "./tracked";
 const filenames = [];
 
+console.log(chalk.blue('Hello world!'));
 fs.readdirSync(sourceFolder).forEach(file => {
-  if(file.split(".")[1] === 'sketch') {
+  if (file.split(".")[1] === "sketch") {
     filenames.push({ file, name: file.split(".")[0] });
   }
 });
@@ -21,10 +25,25 @@ filenames.forEach(({ name, file }) => {
     path.resolve(`${sourceFolder}/${file}`),
     path.resolve(`${sourceFolder}/${name}.zip`)
   );
-  fs.createReadStream(path.resolve(`${sourceFolder}/${name}.zip`))
-    .pipe(unzipper.Extract({ path: path.resolve(`${trackedFolder}/${name}`) }));
+  fs.createReadStream(path.resolve(`${sourceFolder}/${name}.zip`)).pipe(
+    unzipper.Extract({ path: path.resolve(`${trackedFolder}/${name}`) })
+  );
 });
 
-git.add('./*').commit("first commit from simple-git!")
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'commit_message',
+      message: "Write your commit message:"
+    }
+  ])
+  .then(answers => {
+    console.log(answers);
+    git.add('./*').commit(answers.commit_message)
+    console.log(chalk.bgRgb(15, 100, 204).inverse('It works!'))
+  });
 
-console.log("farr", filenames);
+//
+
+//console.log("farr", filenames, argv.x);
