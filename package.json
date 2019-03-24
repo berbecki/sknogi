@@ -1,24 +1,28 @@
 {
   "name": "sknogi",
   "version": "1.0.0",
+  "description": "bla ble",
+  "repository": "git",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "pull": "node",
     "push": "",
-    "commit": "node ./bin/commit.js",
+    "start": "node ./bin/index.js",
     "prettier-watch": "onchange './tmp/**/*.json' -- prettier --write {{changed}}"
   },
   "dependencies": {
     "chalk": "^2.4.2",
+    "figlet": "^1.2.1",
     "inquirer": "^6.2.2",
     "onchange": "^5.2.0",
     "prettier": "^1.16.4",
+    "shelljs": "^0.8.3",
     "simple-git": "^1.107.0",
     "unzipper": "^0.9.11",
     "yargs": "^13.2.2"
   },
   "bin": {
-    "sknogi": "./bin/commit.js"
+    "sknogi": "./bin/index.js"
   }
 }
